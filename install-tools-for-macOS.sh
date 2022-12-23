@@ -224,9 +224,20 @@ if ! is-package-installed code ; then
 fi
 
 if ! is-package-installed gitkraken ; then
-    install git-kraken 
-    show-loc "--cask git-kracken"
+    install "--cask git-kraken" 
+    show-loc gitkracken
 fi
+
+if ! is-package-installed google-chrome ; then
+    install "--cask google-chrome"
+    show-loc google-chrome
+fi
+
+if ! does-app-exist inkscape ; then
+    install "--cask inkscape"
+    show-loc inkscape 
+fi
+
 
 if ! does-app-exist postman ; then
     install "--cask postman"
