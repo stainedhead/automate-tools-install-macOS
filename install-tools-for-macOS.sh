@@ -15,7 +15,7 @@ start-section "Dev languages"
 
 if ! is-package-installed dart ; then
     install dart-sdk 
-    show-version flutter
+    show-version dart
 fi
 
 if ! is-package-installed dotnet ; then
@@ -43,14 +43,29 @@ fi
 #    show-version g++
 #fi
 
-if ! is-package-installed javac ; then
-    install openjdk@17
-    show-version javac
+# install JDK with Adoptium
+#
+# note openjdk will be installed as a dependency to other installs
+# but it won't be useable from command line
+#
+#if ! is-package-installed javac ; then
+#    install openjdk@17
+#    show-version javac
+#fi
+
+if ! is-package-installed kotlin -version; then
+    install kotlin 
+    show-version kotlin -version
 fi
 
 if ! is-package-installed node ; then
     install node
     show-version node
+fi
+
+if ! is-package-installed nim ; then
+    install nim
+    show-version nim
 fi
 
 if ! is-package-installed python3 ; then
@@ -73,6 +88,11 @@ if ! is-package-installed tsc ; then
     show-version tsc
 fi
 
+if ! is-package-installed zig version; then
+    install zig 
+    show-version zig version
+fi
+
 
 ############################################################
 start-section "CLI tools"
@@ -80,6 +100,11 @@ start-section "CLI tools"
 if ! is-package-installed aws ; then
     install awscli 
     show-version aws
+fi
+
+if ! is-package-installed eb ; then
+    install awsebcli 
+    show-version eb
 fi
 
 if ! is-package-installed az ; then
@@ -104,7 +129,7 @@ if ! is-package-installed cdktf ; then
 fi
 
 if ! is-package-installed cmake ; then
-    install-apt cmake
+    install cmake
     show-version cmake
 fi
 
@@ -113,7 +138,7 @@ if ! is-package-installed create-react-app ; then
     show-version create-react-app
 fi
 
-if ! is-package-installed flutter ; then
+if ! does-app-exist flutter ; then
     install "--cask flutter" 
     show-version flutter
 fi
@@ -128,9 +153,9 @@ if ! is-package-installed git ; then
     show-version git
 fi
 
-if ! is-package-installed gradle ; then
+if ! is-package-installed gradle -v; then
     install gradle 
-    show-version gradle
+    show-version gradle -v
 fi
 
 if ! is-package-installed httpie ; then
@@ -228,12 +253,12 @@ if ! is-package-installed code ; then
     show-version code
 fi
 
-if ! is-package-installed gitkraken ; then
-    install "--cask git-kraken" 
-    show-loc gitkracken
-fi
+#if ! does-app-exist gitkraken ; then
+#    install "--cask gitkraken" 
+#    show-loc gitkracken
+#fi
 
-if ! is-package-installed google-chrome ; then
+if ! does-app-exist google-chrome ; then
     install "--cask google-chrome"
     show-loc google-chrome
 fi
